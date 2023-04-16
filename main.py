@@ -3,6 +3,7 @@ from src.utils import get_data, train_model
 from src.model_heuristic import HeuristicModel
 from src.model_RF import RFModel
 from src.model_hgb import HistGradientBoostingModel
+from src.model_nn import NNModel
 from sklearn.metrics import classification_report
 
 from sklearn.model_selection import GridSearchCV
@@ -22,3 +23,6 @@ if __name__ == "__main__":
     model_hgb = HistGradientBoostingModel(class_weight="balanced",
                                           verbose=1, random_state=42)
     train_model(model_hgb, data, "hgb", check=check)
+
+    model_nn = NNModel()
+    train_model(model_nn, data, "nn", check=check)

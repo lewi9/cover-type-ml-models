@@ -18,7 +18,8 @@ def get_data():
 def data_split(data):
     X = data.iloc[:,:-1]
     y = data.iloc[:,-1]
-    return train_test_split(X, y, test_size=0.2, random_state=42, stratify=y)
+    return train_test_split(X, y, test_size=0.2, random_state=42,
+                            stratify=y, shuffle = True)
 
 def save_model(model, path):
     ofile = bz2.BZ2File(path,'wb')
@@ -32,5 +33,9 @@ def train_model(model, data, name, check):
     np.random.seed(42)
     X_train, X_test, y_train, y_test = data_split(data)
     model.fit(X_train, y_train)
+    print(model.score(X_test,y_test))
     save_model(model, f"models/{name}.pkl.bz2")
+
+def rescale_data(X):
+    return (X-X.min())/(X.max()-X.min())
     
