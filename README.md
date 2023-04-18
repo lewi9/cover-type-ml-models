@@ -1,7 +1,7 @@
 # cover-type-ml-models-classifier
 
 I am using python 3.10.6\
-Docker image can not work.\
+Docker image can not work.
 
 
 First you need to install necessary packages.
